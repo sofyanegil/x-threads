@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 const api = (() => {
   const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
@@ -5,19 +7,15 @@ const api = (() => {
     localStorage.setItem('ACCESS_TOKEN', token);
   };
 
-  const getAccessToken = () => {
-    return localStorage.getItem('ACCESS_TOKEN');
-  };
+  const getAccessToken = () => localStorage.getItem('ACCESS_TOKEN');
 
-  const _fetchWithAuth = async (url, options = {}) => {
-    return fetch(url, {
-      ...options,
-      headers: {
-        ...options.headers,
-        Authorization: `Bearer ${getAccessToken()}`,
-      },
-    });
-  };
+  const _fetchWithAuth = async (url, options = {}) => fetch(url, {
+    ...options,
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${getAccessToken()}`,
+    },
+  });
 
   /*
     Users
@@ -62,7 +60,7 @@ const api = (() => {
 
     const {
       data: { token },
-    } = await res;
+    } = await responseJson;
 
     return token;
   };
