@@ -321,7 +321,16 @@ const api = (() => {
       method: 'GET',
     });
     const responseJson = await response.json();
-    return responseJson;
+    const { status, message } = responseJson;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const {
+      data: { leaderboards },
+    } = responseJson;
+
+    return leaderboards;
   };
 
   return {

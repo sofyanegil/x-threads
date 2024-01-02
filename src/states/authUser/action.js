@@ -1,58 +1,54 @@
-import api from '../../api';
-import Swal from 'sweetalert2';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import api from '../../utils/api';
+import { showSuccessAlert, showErrorAlert } from '../../utils/alert';
 
 const ActionType = {
-  SET_AUTH_USER: 'SET_AUTH_USER',
-  UNSET_AUTH_USER: 'UNSET_AUTH_USER',
+  SET_AUTH_USER: 'authUser/SET',
+  UNSET_AUTH_USER: 'authUser/UNSET',
 };
 
-const setAuthUserActionCreator = (authUser) => {
+function setAuthUserActionCreator(authUser) {
   return {
     type: ActionType.SET_AUTH_USER,
     payload: {
       authUser,
     },
   };
-};
+}
 
-const unsetAuthUserActionCreator = () => {
+function unsetAuthUserActionCreator() {
   return {
     type: ActionType.UNSET_AUTH_USER,
     payload: {
       authUser: null,
     },
   };
-};
+}
 
-const asyncSetAuthUser = ({ email, password }) => {
+function asyncSetAuthUser({ email, password }) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const token = await api.login({ email, password });
       api.putAccessToken(token);
       const authUser = await api.getOwnProfile();
-
       dispatch(setAuthUserActionCreator(authUser));
-      Swal.fire({
-        icon: 'success',
-        title: 'Login success',
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      showSuccessAlert('Login success');
     } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: error.message,
-      });
+      showErrorAlert(error.message);
     }
+    dispatch(hideLoading());
   };
-};
+}
 
-const asyncUnsetAuthUser = () => {
+function asyncUnsetAuthUser() {
   return (dispatch) => {
     dispatch(unsetAuthUserActionCreator());
     api.putAccessToken('');
+    showSuccessAlert('Logout success');
   };
-};
+}
 
-export { ActionType, setAuthUserActionCreator, unsetAuthUserActionCreator, asyncSetAuthUser, asyncUnsetAuthUser };
+export {
+  ActionType, setAuthUserActionCreator, unsetAuthUserActionCreator, asyncSetAuthUser, asyncUnsetAuthUser,
+};
