@@ -1,6 +1,7 @@
 const ActionType = {
   RECEIVE_CATEGORIES: 'categories/RECEIVE',
   SET_CATEGORY: 'categories/SET',
+  CLEAR_CATEGORY: 'categories/CLEAR',
 };
 
 function receiveCategoriesActionCreator(categories) {
@@ -12,24 +13,22 @@ function receiveCategoriesActionCreator(categories) {
   };
 }
 
-function setCategoryActionCreator(category) {
+function setCategoryActionCreator(selectedCategory) {
   return {
     type: ActionType.SET_CATEGORY,
     payload: {
-      category,
+      selectedCategory,
     },
   };
 }
 
 function clearCategoryActionCreator() {
   return {
-    type: ActionType.SET_CATEGORY,
+    type: ActionType.CLEAR_CATEGORY,
     payload: {
-      category: null,
+      selectedCategory: null,
     },
   };
 }
 
-export {
-  ActionType, receiveCategoriesActionCreator, setCategoryActionCreator, clearCategoryActionCreator,
-};
+export { ActionType, receiveCategoriesActionCreator, setCategoryActionCreator, clearCategoryActionCreator };

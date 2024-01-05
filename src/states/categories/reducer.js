@@ -1,13 +1,16 @@
 import { ActionType } from './action';
 
-function categoriesReducer(categories = [], action = {}) {
+function categoriesReducer(categories = { values: [], selectedCategory: null }, action = {}) {
   switch (action.type) {
     case ActionType.RECEIVE_CATEGORIES:
-      return action.payload.categories;
+      return {
+        values: action.payload.categories,
+        selectedCategory: null,
+      };
     case ActionType.SET_CATEGORY:
       return {
         ...categories,
-        selectedCategory: action.payload.category,
+        selectedCategory: action.payload.selectedCategory,
       };
     case ActionType.CLEAR_CATEGORY:
       return {

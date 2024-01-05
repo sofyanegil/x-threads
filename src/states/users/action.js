@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { showErrorAlert, showSuccessAlert } from '../../utils/alert';
 
@@ -15,13 +16,15 @@ function receiveUsersActionCreator(users) {
 }
 
 function asyncRegisterUser({ name, email, password }) {
-  return async () => {
+  return async (dispatch) => {
+    dispatch(showLoading());
     try {
       await api.register({ name, email, password });
-      showSuccessAlert('User registered successfully');
+      showSuccessAlert('User registered successfully, please login');
     } catch (error) {
       showErrorAlert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 

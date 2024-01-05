@@ -1,12 +1,12 @@
 import { ActionType } from './action';
 
-const leaderboardsReducer = (leaderboards = [], action = {}) => {
+function leaderboardsReducer(leaderboards = [], action = {}) {
   switch (action.type) {
-    case ActionType.SET_LEADERBOARDS:
+    case ActionType.RECEIVE_LEDERBOARDS:
       return action.payload.leaderboards;
     default:
       return leaderboards;
   }
-};
+}
 
 export default leaderboardsReducer;
