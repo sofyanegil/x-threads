@@ -11,7 +11,7 @@ export default function ThreadItem({ id, title, body, category, totalComments, u
         <div className="d-flex gap-2 align-items-center">
           <img src={user.avatar} alt={user.avatar} width={30} className="img-thumbnail" />
           <p className="card-subtitle text-muted text-small">{`${user.name} | ${relativeFormattedDate(createdAt)}`}</p>
-          <span className="badge bg-dark rounded-pill fw-light">{category}</span>
+          <span className="badge bg-dark rounded-pill fw-light ms-auto">{category}</span>
         </div>
       </div>
       <div className="card-body">

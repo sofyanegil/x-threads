@@ -9,7 +9,7 @@ import ThreadsList from '../components/ThreadsList';
 import CategoriesList from '../components/CategoriesList';
 
 export default function HomePage() {
-  const { threads = [], users = [], leaderboards = [], categories = {}, authUser } = useSelector((states) => states);
+  const { threads = [], users = [], leaderboards = [], categories = { value: [], selectedCategory: null }, authUser = null } = useSelector((states) => states);
   const dispatch = useDispatch();
 
   useEffect(() => {

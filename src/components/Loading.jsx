@@ -7,7 +7,7 @@ export default function Loading() {
       className="bg-warning"
       style={{
         height: '3px',
-        position: 'absolute',
+        position: 'fixed',
         top: '0',
         zIndex: '9999',
       }}

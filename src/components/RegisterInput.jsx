@@ -10,7 +10,7 @@ export default function RegisterInput({ register }) {
   const [password, onChangePassword] = useInput('');
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
     register({ name, email, password });
   };
 
@@ -27,7 +27,7 @@ export default function RegisterInput({ register }) {
       </div>
 
       <div className="form-floating mb-2">
-        <input type="password" className="form-control" id="password" placeholder="Password" required value={password} onChange={onChangePassword} />
+        <input type="password" className="form-control" id="password" placeholder="Password" required value={password} onChange={onChangePassword} autoComplete="off" />
         <label htmlFor="password">Password</label>
       </div>
 

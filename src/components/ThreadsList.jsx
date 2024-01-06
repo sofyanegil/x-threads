@@ -6,7 +6,7 @@ export default function ThreadsList({ threads }) {
   return (
     <div className="card">
       <div className="card-header">
-        <h1 className="text-center fs-3">Thread List</h1>
+        <h1 className="text-center fs-3">Threads</h1>
       </div>
       <div className="card-body">
         {threads.map((thread) => (

@@ -21,7 +21,7 @@ export default function LoginInput({ login }) {
       </div>
 
       <div className="form-floating mb-2">
-        <input type="password" className="form-control" id="password" placeholder="Password" required value={password} onChange={onChangePassword} />
+        <input type="password" className="form-control" id="password" placeholder="Password" required value={password} onChange={onChangePassword} autoComplete="off" />
         <label htmlFor="password">Password</label>
       </div>
 
