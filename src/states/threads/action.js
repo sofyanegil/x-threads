@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 import { showSuccessAlert, showErrorAlert } from '../../utils/alert';
 
@@ -27,6 +28,7 @@ function createThreadActionCreator(thread) {
 
 function asyncAddThread({ title, body, category }) {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const thread = await api.postThread({ title, body, category });
       dispatch(createThreadActionCreator(thread));
@@ -34,9 +36,8 @@ function asyncAddThread({ title, body, category }) {
     } catch (error) {
       showErrorAlert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 
-export {
-  ActionType, receiveThreadsActionCreator, createThreadActionCreator, asyncAddThread,
-};
+export { ActionType, receiveThreadsActionCreator, createThreadActionCreator, asyncAddThread };
