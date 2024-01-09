@@ -5,7 +5,6 @@ import { showSuccessAlert, showErrorAlert } from '../../utils/alert';
 const ActionType = {
   RECEIVE_THREADS: 'threads/RECEIVE',
   CREATE_THREAD: 'threads/CREATE',
-  FILTER_THREADS: 'threads/FILTER',
 };
 
 function receiveThreadsActionCreator(threads) {
