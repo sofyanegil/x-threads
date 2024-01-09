@@ -9,8 +9,12 @@ import ThreadsList from '../components/ThreadsList';
 import CategoriesList from '../components/CategoriesList';
 
 export default function HomePage() {
-  const { threads = [], users = [], leaderboards = [], categories = { value: [], selectedCategory: null }, authUser = null } = useSelector((states) => states);
   const dispatch = useDispatch();
+  const threads = useSelector((states) => states.threads);
+  const users = useSelector((states) => states.users);
+  const leaderboards = useSelector((states) => states.leaderboards);
+  const categories = useSelector((states) => states.categories);
+  const authUser = useSelector((states) => states.authUser);
 
   useEffect(() => {
     dispatch(asyncHomePageData());

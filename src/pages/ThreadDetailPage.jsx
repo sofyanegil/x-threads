@@ -9,10 +9,10 @@ import CommentsList from '../components/CommentsList';
 import { showErrorAlert } from '../utils/alert';
 
 export default function ThreadDetailPage() {
-  const { id } = useParams();
   const dispatch = useDispatch();
-
-  const { threadDetail = null, authUser } = useSelector((states) => states);
+  const { id } = useParams();
+  const threadDetail = useSelector((states) => states.threadDetail);
+  const authUser = useSelector((states) => states.authUser);
 
   useEffect(() => {
     dispatch(asyncReceiveThreadDetail(id));

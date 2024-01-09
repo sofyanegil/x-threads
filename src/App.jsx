@@ -15,8 +15,9 @@ import './styles/main.scss';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
-  const { authUser = null, isPreload = false } = useSelector((states) => states);
   const dispatch = useDispatch();
+  const authUser = useSelector((states) => states.authUser);
+  const isPreload = useSelector((states) => states.isPreload);
 
   useEffect(() => {
     dispatch(asyncPreloadProcess());
