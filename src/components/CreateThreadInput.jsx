@@ -40,7 +40,7 @@ export default function CreateThreadInput({ createThread }) {
         <label htmlFor="body" className="form-label">
           Body
         </label>
-        <div className="form-control text-small" id="body" contentEditable style={{ minHeight: '25vh' }} onInput={onChangeBodyHandler} />
+        <div className="form-control text-small" id="body" contentEditable style={{ minHeight: '25vh' }} onInput={onChangeBodyHandler} placeholder="Body" />
       </div>
 
       <div className="input-group my-2">

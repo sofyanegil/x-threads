@@ -30,7 +30,7 @@ export default function CommentInput({ comment, authUser }) {
       {authUser ? (
         <form className="card-body" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <div className="form-control text-small" id="content" contentEditable style={{ minHeight: '15vh' }} onInput={onChangeBodyHandler} />
+            <div className="form-control text-small" id="content" contentEditable style={{ minHeight: '15vh' }} onInput={onChangeBodyHandler} placeholder="Content" />
           </div>
 
           <div className="input-group my-2">
