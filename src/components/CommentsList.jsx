@@ -2,14 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CommentItem from './CommentItem';
+import Title from './styled/Title';
 
 export default function CommentsList({ comments, authUser, upVote, downVote, neutralVote }) {
   return (
     <div>
-      <h5 className="card-title mb-2 fs-5">
+      <Title variant="subsubtitle">
         {'Comments '}
         {`(${comments.length})`}
-      </h5>
+      </Title>
       {comments.map((comment) => (
         <CommentItem key={comment.id} {...comment} authUser={authUser} upVote={upVote} downVote={downVote} neutralVote={neutralVote} />
       ))}

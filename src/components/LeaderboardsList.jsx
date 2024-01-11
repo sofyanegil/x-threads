@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './styled/Title';
 
 export default function LeaderboardsList({ leaderboards }) {
   return (
     <div className="card">
-      <p className="card-header text-center text-center fs-5">Leaderboards</p>
+      <Title variant="subtitle" className="text-center card-header">
+        Leaderboards
+      </Title>
       <ul className="list-group list-group-flush">
         {leaderboards.map((leaderboard) => (
           <li key={leaderboard.user.id} className="list-group-item d-flex justify-content-between align-items-center">

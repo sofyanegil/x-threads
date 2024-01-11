@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import Button from './styled/Button';
 
 export default function LoginInput({ login }) {
   const [email, onChangeEmail] = useInput('');
@@ -26,9 +27,9 @@ export default function LoginInput({ login }) {
       </div>
 
       <div className="input-group my-2">
-        <button type="submit" className="btn btn-success rounded">
+        <Button type="submit" size="sm">
           Login
-        </button>
+        </Button>
       </div>
 
       <p className="text-muted">

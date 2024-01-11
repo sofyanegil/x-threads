@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import useInput from '../hooks/useInput';
 import { showErrorAlert } from '../utils/alert';
+import Button from './styled/Button';
+import Title from './styled/Title';
 
 export default function CommentInput({ comment, authUser }) {
   const [content, , setContent] = useInput('');
@@ -26,7 +28,7 @@ export default function CommentInput({ comment, authUser }) {
 
   return (
     <div>
-      <h5 className="card-title fs-5">Add Comment</h5>
+      <Title variant="subsubtitle">Add Comment</Title>
       {authUser ? (
         <form className="card-body" onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -34,9 +36,9 @@ export default function CommentInput({ comment, authUser }) {
           </div>
 
           <div className="input-group my-2">
-            <button type="submit" className="btn btn-success btn-sm rounded">
+            <Button type="submit" variant="success" size="sm">
               Comment
-            </button>
+            </Button>
           </div>
         </form>
       ) : (

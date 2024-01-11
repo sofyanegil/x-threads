@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import parser from 'html-react-parser';
 import { relativeFormattedDate, truncateString } from '../utils/formatter';
+import Title from './styled/Title';
 
 export default function ThreadItem({ id, title, body, category, totalComments, user, createdAt }) {
   return (
@@ -16,7 +17,9 @@ export default function ThreadItem({ id, title, body, category, totalComments, u
       </div>
       <div className="card-body">
         <Link to={`/threads/${id}`} className="card-link text-decoration-none">
-          <p className="fw-bold link-dark">{title}</p>
+          <Title variant="subsubtitle" className="fw-bold link-dark">
+            {title}
+          </Title>
         </Link>
         <div className="card-text text-small">{parser(truncateString(body, 150))}</div>
         <small className="text-muted card-text">{`${totalComments} comments`}</small>

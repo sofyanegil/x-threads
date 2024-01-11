@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
 import { showErrorAlert } from '../utils/alert';
+import Button from './styled/Button';
 
 export default function CreateThreadInput({ createThread }) {
   const [title, onChangeTitle] = useInput('');
@@ -44,9 +45,9 @@ export default function CreateThreadInput({ createThread }) {
       </div>
 
       <div className="input-group my-2">
-        <button type="submit" className="btn btn-success rounded">
+        <Button type="submit" variant="success" size="sm">
           Create
-        </button>
+        </Button>
       </div>
     </form>
   );

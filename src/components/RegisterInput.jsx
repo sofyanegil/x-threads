@@ -3,15 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import useInput from '../hooks/useInput';
+import Button from './styled/Button';
 
 export default function RegisterInput({ register }) {
-  const [name, onChangeName] = useInput('');
-  const [email, onChangeEmail] = useInput('');
-  const [password, onChangePassword] = useInput('');
+  const [name, onChangeName, setName] = useInput('');
+  const [email, onChangeEmail, setEmail] = useInput('');
+  const [password, onChangePassword, setPassword] = useInput('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     register({ name, email, password });
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -32,9 +36,9 @@ export default function RegisterInput({ register }) {
       </div>
 
       <div className="input-group my-2">
-        <button type="submit" className="btn btn-success rounded">
+        <Button type="submit" variant="dark" size="sm">
           Register
-        </button>
+        </Button>
       </div>
 
       <p className="text-muted">
