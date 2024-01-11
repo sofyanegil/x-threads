@@ -5,6 +5,7 @@ import { showErrorAlert, showSuccessAlert } from '../../utils/alert';
 const ActionType = {
   RECEIVE_THREAD_DETAIL: 'threadDetail/RECEIVE',
   CLEAR_THREAD_DETAIL: 'threadDetail/CLEAR',
+  ADD_COMMENT: 'threadDetail/ADD_COMMENT',
   UP_VOTE_THREAD: 'threadDetail/UP_VOTE',
   DOWN_VOTE_THREAD: 'threadDetail/DOWN_VOTE',
   NEUTRAL_VOTE_THREAD: 'threadDetail/NEUTRAL_VOTE',
@@ -42,12 +43,22 @@ function asyncReceiveThreadDetail(threadId) {
   };
 }
 
+function addCommentActionCreator(comment) {
+  return {
+    type: ActionType.ADD_COMMENT,
+    payload: {
+      comment,
+    },
+  };
+}
+
 function asyncAddComment({ content, threadId }) {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
-      await api.postComment({ content, threadId });
-      dispatch(asyncReceiveThreadDetail(threadId));
+      const comment = await api.postComment({ content, threadId });
+      dispatch(addCommentActionCreator(comment));
+
       showSuccessAlert('Comment added');
     } catch (error) {
       showErrorAlert(error.message);
