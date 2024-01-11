@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
 import { BiDownvote, BiSolidDownvote, BiUpvote, BiSolidUpvote } from 'react-icons/bi';
 import { relativeFormattedDate } from '../utils/formatter';
+import Title from './styled/Title';
 
 export default function ThreadDetail({ title, body, category, upVotesBy, downVotesBy, createdAt, owner, authUser, upVote, downVote, neutralVote }) {
   const isThreadUpVoted = upVotesBy.includes(authUser?.id);
@@ -35,7 +36,9 @@ export default function ThreadDetail({ title, body, category, upVotesBy, downVot
         </div>
       </div>
       <div className="card-body">
-        <h1 className="card-title fs-5">{title}</h1>
+        <Title variant="title" className="fw-bold link-dark card-title">
+          {title}
+        </Title>
         <div className="card-text fs-6">{parser(body)}</div>
       </div>
       <div className="card-footer">

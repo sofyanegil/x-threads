@@ -1,12 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './styled/Title';
 
 export default function CategoriesList({ categories, selectedCategoryHandler }) {
   const { values, selectedCategory } = categories;
 
   return (
     <div className="card">
-      <p className="card-header text-center text-center fs-5">Popular Category</p>
+      <Title variant="subtitle" className="text-center card-header">
+        Popular Category
+      </Title>
       <div className="card-body p-2 rounded">
         {values.map((category) => (
           <button

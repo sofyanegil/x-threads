@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ThreadItem from './ThreadItem';
+import Title from './styled/Title';
 
 export default function ThreadsList({ threads }) {
   return (
     <div className="card">
-      <div className="card-header">
-        <h1 className="text-center fs-3">Threads</h1>
-      </div>
+      <Title variant="title" className="text-center card-header">
+        Threads
+      </Title>
       <div className="card-body">
         {threads.map((thread) => (
           <ThreadItem key={thread.id} {...thread} />

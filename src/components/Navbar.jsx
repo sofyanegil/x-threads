@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Button from './styled/Button';
 
 export default function Navbar({ authUser, signOut }) {
   return (
@@ -26,15 +27,17 @@ export default function Navbar({ authUser, signOut }) {
                     <span className=" nav-link text-warning">{authUser.name}</span>
                   </li>
                   <li className="nav-item p-2">
-                    <button type="submit" className="btn btn-danger btn-sm" onClick={signOut}>
+                    <Button type="submit" variant="danger" size="sm" onClick={signOut}>
                       Sign out
-                    </button>
+                    </Button>
                   </li>
                 </>
               ) : (
                 <li className="nav-item">
-                  <Link to="/login" className="btn btn-warning text-decoration-none text-dark tex-bold btn-sm">
-                    Sign In
+                  <Link to="/login" className="text-decoration-none">
+                    <Button variant="warning" size="sm">
+                      Sign In
+                    </Button>
                   </Link>
                 </li>
               )}
